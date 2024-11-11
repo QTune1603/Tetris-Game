@@ -102,6 +102,12 @@ class GameActivity : AppCompatActivity() {
         updateVolumeIcon()
     }
 
+    private fun resetPauseButton() {
+        isPaused = false // Đặt lại trạng thái isPaused
+        findViewById<ImageButton>(R.id.btn_pause).setImageResource(R.drawable.ic_pause)
+    }
+
+
     private fun setupButtonListeners() {
         findViewById<ImageButton>(R.id.btn_pause).setOnClickListener {
             togglePause()
@@ -126,6 +132,7 @@ class GameActivity : AppCompatActivity() {
             updateScore(0)
             updateLinesCleared(0)
             updateLevel(levelTextView.text.toString())
+            resetPauseButton()
         }
         findViewById<Button>(R.id.btn_left).setOnClickListener {
             gameManager.movePieceLeft()
@@ -216,6 +223,7 @@ class GameActivity : AppCompatActivity() {
         dialogView.findViewById<Button>(R.id.btn_restart).setOnClickListener {
             dialog.dismiss()
             gameManager.resetGame()
+            resetPauseButton()
         }
         dialogView.findViewById<Button>(R.id.btn_quit).setOnClickListener {
             dialog.dismiss()

@@ -115,6 +115,7 @@ class GameManager(
         onLinesClearedUpdated?.invoke(linesCleared)
         isPaused = false
         isGameInProcess = true
+        isGameEnded = false
         gameGrid.clearGrid()
         gameView.reset()
         gameView.invalidate()
